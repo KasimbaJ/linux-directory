@@ -1,16 +1,140 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+// Sample tools data - we'll make this look great regardless of styling
+const featuredTools = [
+  {
+    name: "Ubuntu",
+    description: "User-friendly Linux distribution perfect for beginners and professionals. Features long-term support releases.",
+    category: "Operating Systems",
+    website: "https://ubuntu.com",
+    tags: ["linux", "distribution", "desktop"],
+    pricing: "free"
+  },
+  {
+    name: "VS Code",
+    description: "Powerful code editor with excellent Linux support, integrated terminal, and thousands of extensions.",
+    category: "Development Tools", 
+    website: "https://code.visualstudio.com",
+    tags: ["editor", "development", "microsoft"],
+    pricing: "free"
+  },
+  {
+    name: "Docker",
+    description: "Industry-standard containerization platform for consistent application deployment.",
+    category: "DevOps Tools",
+    website: "https://docker.com",
+    tags: ["containers", "devops", "deployment"],
+    pricing: "freemium"
+  },
+  {
+    name: "GIMP",
+    description: "Professional image editing software, free alternative to Photoshop with plugin support.",
+    category: "Media Tools", 
+    website: "https://gimp.org",
+    tags: ["graphics", "photo-editing", "design"],
+    pricing: "free"
+  },
+  {
+    name: "Firefox",
+    description: "Privacy-focused web browser with excellent Linux integration and customization options.",
+    category: "Productivity",
+    website: "https://firefox.com",
+    tags: ["browser", "privacy", "web"],
+    pricing: "free"
+  },
+  {
+    name: "Neovim",
+    description: "Modern text editor building on Vim's legacy with improved performance and better defaults.",
+    category: "Development Tools",
+    website: "https://neovim.io",
+    tags: ["editor", "vim", "terminal"],
+    pricing: "free"
+  }
+];
+
+const categories = [
+  { name: "Operating Systems", count: 25, icon: "🐧" },
+  { name: "Development Tools", count: 45, icon: "⚡" },
+  { name: "DevOps Tools", count: 30, icon: "🔧" },
+  { name: "Security Tools", count: 20, icon: "🔒" },
+  { name: "Media Tools", count: 15, icon: "🎵" },
+  { name: "Productivity", count: 35, icon: "📊" }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Linux Directory - Discover the Best Open Source Tools">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    
+    <!-- Hero Section -->
+    <section style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #e0f2fe 0%, #e1bee7 100%); border-radius: 20px; margin: 20px 0;">
+      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">
+        Discover the Best <span style="color: #2563eb;">Linux Tools</span>
+      </h1>
+      <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Curated collection of <strong>170+</strong> open-source tools, Linux distributions, and development utilities trusted by developers worldwide.
+      </p>
+      
+      <!-- Search Bar -->
+      <div style="max-width: 500px; margin: 0 auto 30px;">
+        <input 
+          type="text" 
+          placeholder="Search tools, categories, or tags..." 
+          style="width: 100%; padding: 15px 20px; font-size: 1.1rem; border: 2px solid #e2e8f0; border-radius: 12px; outline: none;"
+          id="search-input"
+        />
+      </div>
+
+      <!-- Quick Stats -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; max-width: 600px; margin: 0 auto;">
+        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
+          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">170+</div>
+          <div style="font-size: 0.9rem; color: #4a5568;">Tools Listed</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
+          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">12</div>
+          <div style="font-size: 0.9rem; color: #4a5568;">Categories</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
+          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">10k+</div>
+          <div style="font-size: 0.9rem; color: #4a5568;">Monthly Users</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
+          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">8</div>
+          <div style="font-size: 0.9rem; color: #4a5568;">Added This Week</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section style="margin: 60px 0;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 15px; color: #1a202c;">Browse by Category</h2>
+        <p style="font-size: 1.2rem; color: #4a5568;">Find tools organized by use case and functionality</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+        {categories.map(category => (
+          <a 
+            href={`/categories/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+            style="background: white; padding: 30px; border-radius: 15px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; transition: all 0.3s; display: block;"
+            onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'"
+          >
+            <div style="font-size: 3rem; margin-bottom: 15px;">{category.icon}</div>
+            <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; color: #1a202c;">{category.name}</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #2563eb; font-weight: 600;">{category.count} tools</span>
+              <span style="color: #9ca3af;">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Tools -->
+    <section style="margin: 60px 0;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 15px; color: #1a202c;">Featured Tools</h2>
+        <p style="font-size: 1.2rem; color: #4a5568;">Essential tools recommended by the community</p>
+      </div>
+      <div style="display: grid; grid-template-columns:

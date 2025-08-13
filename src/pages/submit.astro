@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Submit a Tool - Linux Directory">
+  <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+    
+    <!-- Header -->
+    <div style="text-align: center; margin-bottom: 50px;">
+      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">Submit a Tool</h1>
+      <p style="font-size: 1.2rem; color: #4a5568; max-width: 600px; margin: 0 auto;">
+        Help the community discover amazing Linux and open-source tools. All submissions are reviewed within 24 hours.
+      </p>
+    </div>
+    
+    <!-- Form Container -->
+    <div style="background: white; border-radius: 20px; padding: 40px; border: 2px solid #e2e8f0;">
+      
+      <form id="submit-form" style="display: block;">
+        <!-- Tool Name & Category -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+              Tool Name *
+            </label>
+            <input 
+              type="text" 
+              name="name" 
+              required
+              placeholder="e.g., Docker, Ubuntu, VS Code"
+              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            />
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+              Category *
+            </label>
+            <select 
+              name="category" 
+              required
+              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            >
+              <option value="">Select category</option>
+              <option value="Operating Systems">Operating Systems</option>
+              <option value="Development Tools">Development Tools</option>
+              <option value="DevOps Tools">DevOps Tools</option>
+              <option value="Security Tools">Security Tools</option>
+              <option value="Media Tools">Media Tools</option>
+              <option value="Productivity">Productivity</option>
+              <option value="System Administration">System Administration</option>
+              <option value="Networking">Networking</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            Description *
+          </label>
+          <textarea 
+            name="description" 
+            required
+            rows="4"
+            placeholder="Describe what this tool does, its key features, and why it's useful..."
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; resize: vertical;"
+          ></textarea>
+        </div>
+
+        <!-- Website & GitHub -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+              Website URL *
+            </label>
+            <input 
+              type="url" 
+              name="website" 
+              required
+              placeholder="https://example.com"
+              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            />
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+              GitHub Repository
+            </label>
+            <input 
+              type="url" 
+              name="github"
+              placeholder="https://github.com/user/repo"
+              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            />
+          </div>
+        </div>
+
+        <!-- Tags & Pricing -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+              Tags (comma-separated)
+            </label>
+            <input 
+              type="text" 
+              name="tags"
+              placeholder="linux, open-source, cli, python"
+              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            />
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+              Pricing Model *
+            </label>
+            <select 
+              name="pricing" 
+              required
+              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            >
+              <option value="">Select pricing</option>
+              <option value="free">Free</option>
+              <option value="open-source">Open Source</option>
+              <option value="freemium">Freemium</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Your Email -->
+        <div style="margin-bottom: 35px;">
+          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            Your Email (for updates) *
+          </label>
+          <input 
+            type="email" 
+            name="email" 
+            required
+            placeholder="your@email.com"
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit"
+          style="width: 100%; background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); color: white; padding: 16px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s;"
+          onmouseover="this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.transform='translateY(0)'"
+        >
+          Submit Tool for Review
+        </button>
+      </form>
+      
+      <!-- Success Message -->
+      <div id="success-message" style="display: none; text-align: center; padding: 40px;">
+        <div style="width: 60px; height: 60px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+          <span style="font-size: 1.5rem;">✅</span>
+        </div>
+        <h2 style="font-size: 1.8rem; font-weight: bold; color: #1a202c; margin-bottom: 15px;">Submission Received!</h2>
+        <p style="color: #4a5568; margin-bottom: 25px; font-size: 1.1rem;">
+          Thank you for contributing to the Linux Directory. We'll review your submission and notify you within 24 hours.
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <a href="/" style="background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+            Back to Directory
+          </a>
+          <button onclick="location.reload()" style="border: 2px solid #d1d5db; background: white; color: #374151; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+            Submit Another
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</Layout>
+
+<script>
+  // Form submission handler
+  document.getElementById('submit-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    // Add metadata
+    data.timestamp = new Date().toISOString();
+    data.id = 'submission_' + Date.now();
+    data.status = 'pending';
+    
+    console.log('New submission:', data);
+    
+    // Store submission (for now in localStorage, later we'll use Cloudflare Workers)
+    const submissions = JSON.parse(localStorage.getItem('linux_directory_submissions') || '[]');
+    submissions.push(data);
+    localStorage.setItem('linux_directory_submissions', JSON.stringify(submissions));
+    
+    // Show success message
+    document.getElementById('submit-form').style.display = 'none';
+    document.getElementById('success-message').style.display = 'block';
+  });
+</script>
