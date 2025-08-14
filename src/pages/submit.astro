@@ -189,13 +189,74 @@ import Layout from '../layouts/Layout.astro';
     
     console.log('New submission:', data);
     
-    // Store submission (for now in localStorage, later we'll use Cloudflare Workers)
+    // Store submission locally
     const submissions = JSON.parse(localStorage.getItem('linux_directory_submissions') || '[]');
     submissions.push(data);
     localStorage.setItem('linux_directory_submissions', JSON.stringify(submissions));
     
-    // Show success message
+    // Create email notification
+    const emailSubject = `New Linux Directory Submission: ${data.name}`;
+    const emailBody = `🚀 NEW TOOL SUBMISSION for Linux Directory
+
+📝 TOOL DETAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Tool Name: ${data.name}
+- Category: ${data.category}
+- Website: ${data.website}
+- Pricing: ${data.pricing}
+
+📄 Description:
+${data.description}
+
+🏷️ Tags: ${data.tags || 'None provided'}
+🔗 GitHub: ${data.github || 'Not provided'}
+
+👤 SUBMITTER INFO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Email: ${data.email}
+- Submitted: ${new Date().toLocaleString()}
+- Submission ID: ${data.id}
+
+📋 NEXT STEPS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Review the tool and website
+2. Verify information accuracy
+3. Add to directory if approved
+4. Reply to submitter: ${data.email}
+
+View all submissions in browser localStorage or set up dashboard.
+
+Happy curating! 🐧`;
+
+    // Open email client with pre-filled content
+    const mailtoLink = `mailto:fullstackdev2022@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Show success message immediately
     document.getElementById('submit-form').style.display = 'none';
     document.getElementById('success-message').style.display = 'block';
+    
+    // Ask user if they want to open email notification
+    setTimeout(() => {
+      if (confirm('📧 Open email to notify the admin about this submission?')) {
+        window.open(mailtoLink, '_blank');
+      }
+    }, 1500);
+    
+    // Optional: Log submission for debugging
+    console.log('Submission stored. Total submissions:', submissions.length);
+  });
+  
+  // Form validation improvements
+  const form = document.getElementById('submit-form');
+  const inputs = form?.querySelectorAll('input[required], select[required], textarea[required]');
+  
+  inputs?.forEach(input => {
+    input.addEventListener('blur', () => {
+      if (!input.value.trim()) {
+        input.style.borderColor = '#ef4444';
+      } else {
+        input.style.borderColor = '#10b981';
+      }
+    });
   });
 </script>
