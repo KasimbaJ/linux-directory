@@ -3,24 +3,24 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Submit a Tool - Linux Directory">
-  <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+  <div class="form-container">
     
     <!-- Header -->
-    <div style="text-align: center; margin-bottom: 50px;">
-      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">Submit a Tool</h1>
-      <p style="font-size: 1.2rem; color: #4a5568; max-width: 600px; margin: 0 auto;">
+    <div class="form-header">
+      <h1 class="form-title">Submit a Tool</h1>
+      <p class="form-subtitle">
         Help the community discover amazing Linux and open-source tools. All submissions are reviewed within 24 hours.
       </p>
     </div>
     
     <!-- Form Container -->
-    <div style="background: white; border-radius: 20px; padding: 40px; border: 2px solid #e2e8f0;">
+    <div class="form-wrapper">
       
       <form id="submit-form" style="display: block;">
         <!-- Tool Name & Category -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+        <div class="form-grid">
           <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            <label class="form-label">
               Tool Name *
             </label>
             <input 
@@ -28,17 +28,17 @@ import Layout from '../layouts/Layout.astro';
               name="name" 
               required
               placeholder="e.g., Docker, Ubuntu, VS Code"
-              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+              class="form-input"
             />
           </div>
           <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            <label class="form-label">
               Category *
             </label>
             <select 
               name="category" 
               required
-              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+              class="form-select"
             >
               <option value="">Select category</option>
               <option value="Operating Systems">Operating Systems</option>
@@ -55,8 +55,8 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Description -->
-        <div style="margin-bottom: 25px;">
-          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+        <div class="form-group">
+          <label class="form-label">
             Description *
           </label>
           <textarea 
@@ -64,14 +64,14 @@ import Layout from '../layouts/Layout.astro';
             required
             rows="4"
             placeholder="Describe what this tool does, its key features, and why it's useful..."
-            style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; resize: vertical;"
+            class="form-textarea"
           ></textarea>
         </div>
 
         <!-- Website & GitHub -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+        <div class="form-grid">
           <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            <label class="form-label">
               Website URL *
             </label>
             <input 
@@ -79,43 +79,43 @@ import Layout from '../layouts/Layout.astro';
               name="website" 
               required
               placeholder="https://example.com"
-              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+              class="form-input"
             />
           </div>
           <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            <label class="form-label">
               GitHub Repository
             </label>
             <input 
               type="url" 
               name="github"
               placeholder="https://github.com/user/repo"
-              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+              class="form-input"
             />
           </div>
         </div>
 
         <!-- Tags & Pricing -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+        <div class="form-grid">
           <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            <label class="form-label">
               Tags (comma-separated)
             </label>
             <input 
               type="text" 
               name="tags"
               placeholder="linux, open-source, cli, python"
-              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+              class="form-input"
             />
           </div>
           <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+            <label class="form-label">
               Pricing Model *
             </label>
             <select 
               name="pricing" 
               required
-              style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+              class="form-select"
             >
               <option value="">Select pricing</option>
               <option value="free">Free</option>
@@ -127,8 +127,8 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Your Email -->
-        <div style="margin-bottom: 35px;">
-          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">
+        <div class="form-group">
+          <label class="form-label">
             Your Email (for updates) *
           </label>
           <input 
@@ -136,35 +136,33 @@ import Layout from '../layouts/Layout.astro';
             name="email" 
             required
             placeholder="your@email.com"
-            style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;"
+            class="form-input"
           />
         </div>
 
         <!-- Submit Button -->
         <button 
           type="submit"
-          style="width: 100%; background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); color: white; padding: 16px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s;"
-          onmouseover="this.style.transform='translateY(-2px)'"
-          onmouseout="this.style.transform='translateY(0)'"
+          class="form-submit"
         >
           Submit Tool for Review
         </button>
       </form>
       
       <!-- Success Message -->
-      <div id="success-message" style="display: none; text-align: center; padding: 40px;">
-        <div style="width: 60px; height: 60px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-          <span style="font-size: 1.5rem;">✅</span>
+      <div id="success-message" class="success-message">
+        <div class="success-icon">
+          <span>✅</span>
         </div>
-        <h2 style="font-size: 1.8rem; font-weight: bold; color: #1a202c; margin-bottom: 15px;">Submission Received!</h2>
-        <p style="color: #4a5568; margin-bottom: 25px; font-size: 1.1rem;">
+        <h2 class="success-title">Submission Received!</h2>
+        <p class="success-text">
           Thank you for contributing to the Linux Directory. We'll review your submission and notify you within 24 hours.
         </p>
-        <div style="display: flex; gap: 15px; justify-content: center;">
-          <a href="/" style="background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+        <div class="success-actions">
+          <a href="/" class="success-button">
             Back to Directory
           </a>
-          <button onclick="location.reload()" style="border: 2px solid #d1d5db; background: white; color: #374151; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+          <button onclick="location.reload()" class="success-button-secondary">
             Submit Another
           </button>
         </div>
@@ -182,49 +180,68 @@ import Layout from '../layouts/Layout.astro';
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     
-    // Add metadata
-    data.timestamp = new Date().toISOString();
-    data.id = 'submission_' + Date.now();
-    data.status = 'pending';
+    // Input sanitization - escape HTML characters to prevent XSS
+    const escapeHtml = (text) => {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    };
     
-    console.log('New submission:', data);
+    // Sanitize all form inputs
+    const sanitizedData = {
+      name: escapeHtml(data.name?.trim() || ''),
+      category: escapeHtml(data.category?.trim() || ''),
+      description: escapeHtml(data.description?.trim() || ''),
+      website: data.website?.trim() || '',
+      github: data.github?.trim() || '',
+      tags: escapeHtml(data.tags?.trim() || ''),
+      pricing: escapeHtml(data.pricing?.trim() || ''),
+      // Don't store email in sanitizedData for security
+      timestamp: new Date().toISOString(),
+      id: 'submission_' + Date.now(),
+      status: 'pending'
+    };
     
-    // Store submission locally
+    // Validate required fields
+    if (!sanitizedData.name || !sanitizedData.category || !sanitizedData.description || !sanitizedData.website || !data.email?.trim()) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    
+    // Store only non-sensitive submission data (without email)
     const submissions = JSON.parse(localStorage.getItem('linux_directory_submissions') || '[]');
-    submissions.push(data);
+    submissions.push(sanitizedData);
     localStorage.setItem('linux_directory_submissions', JSON.stringify(submissions));
     
-    // Create email notification
-    const emailSubject = `New Linux Directory Submission: ${data.name}`;
+    // Create email notification with sanitized data
+    const emailSubject = `New Linux Directory Submission: ${sanitizedData.name}`;
     const emailBody = `🚀 NEW TOOL SUBMISSION for Linux Directory
 
 📝 TOOL DETAILS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Tool Name: ${data.name}
-- Category: ${data.category}
-- Website: ${data.website}
-- Pricing: ${data.pricing}
+- Tool Name: ${sanitizedData.name}
+- Category: ${sanitizedData.category}
+- Website: ${sanitizedData.website}
+- Pricing: ${sanitizedData.pricing}
 
 📄 Description:
-${data.description}
+${sanitizedData.description}
 
-🏷️ Tags: ${data.tags || 'None provided'}
-🔗 GitHub: ${data.github || 'Not provided'}
+🏷️ Tags: ${sanitizedData.tags || 'None provided'}
+🔗 GitHub: ${sanitizedData.github || 'Not provided'}
 
 👤 SUBMITTER INFO:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Email: ${data.email}
+- Email: ${escapeHtml(data.email)}
 - Submitted: ${new Date().toLocaleString()}
-- Submission ID: ${data.id}
+- Submission ID: ${sanitizedData.id}
 
 📋 NEXT STEPS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. Review the tool and website
 2. Verify information accuracy
 3. Add to directory if approved
-4. Reply to submitter: ${data.email}
-
-View all submissions in browser localStorage or set up dashboard.
+4. Reply to submitter
 
 Happy curating! 🐧`;
 
@@ -241,9 +258,6 @@ Happy curating! 🐧`;
         window.open(mailtoLink, '_blank');
       }
     }, 1500);
-    
-    // Optional: Log submission for debugging
-    console.log('Submission stored. Total submissions:', submissions.length);
   });
   
   // Form validation improvements

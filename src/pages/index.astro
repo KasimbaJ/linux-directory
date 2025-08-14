@@ -68,64 +68,62 @@ const categories = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     
     <!-- Hero Section -->
-    <section style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #e0f2fe 0%, #e1bee7 100%); border-radius: 20px; margin: 20px 0;">
-      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">
-        Discover the Best <span style="color: #2563eb;">Linux Tools</span>
+    <section class="hero-section">
+      <h1 class="hero-title">
+        Discover the Best <span class="hero-highlight">Linux Tools</span>
       </h1>
-      <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      <p class="hero-subtitle">
         Curated collection of <strong>170+</strong> open-source tools, Linux distributions, and development utilities trusted by developers worldwide.
       </p>
       
       <!-- Search Bar -->
-      <div style="max-width: 500px; margin: 0 auto 30px;">
+      <div class="search-container">
         <input 
           type="text" 
           placeholder="Search tools, categories, or tags..." 
-          style="width: 100%; padding: 15px 20px; font-size: 1.1rem; border: 2px solid #e2e8f0; border-radius: 12px; outline: none;"
+          class="search-input"
           id="search-input"
         />
       </div>
 
       <!-- Quick Stats -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; max-width: 600px; margin: 0 auto;">
-        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
-          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">170+</div>
-          <div style="font-size: 0.9rem; color: #4a5568;">Tools Listed</div>
+      <div class="stats-grid">
+        <div class="stats-card">
+          <div class="stats-number">170+</div>
+          <div class="stats-label">Tools Listed</div>
         </div>
-        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
-          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">12</div>
-          <div style="font-size: 0.9rem; color: #4a5568;">Categories</div>
+        <div class="stats-card">
+          <div class="stats-number">12</div>
+          <div class="stats-label">Categories</div>
         </div>
-        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
-          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">10k+</div>
-          <div style="font-size: 0.9rem; color: #4a5568;">Monthly Users</div>
+        <div class="stats-card">
+          <div class="stats-number">10k+</div>
+          <div class="stats-label">Monthly Users</div>
         </div>
-        <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px;">
-          <div style="font-size: 1.8rem; font-weight: bold; color: #2563eb;">8</div>
-          <div style="font-size: 0.9rem; color: #4a5568;">Added This Week</div>
+        <div class="stats-card">
+          <div class="stats-number">8</div>
+          <div class="stats-label">Added This Week</div>
         </div>
       </div>
     </section>
 
     <!-- Categories Grid -->
-    <section style="margin: 60px 0;">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 15px; color: #1a202c;">Browse by Category</h2>
-        <p style="font-size: 1.2rem; color: #4a5568;">Find tools organized by use case and functionality</p>
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Category</h2>
+        <p class="section-subtitle">Find tools organized by use case and functionality</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+      <div class="categories-grid">
         {categories.map(category => (
           <a 
             href={`/categories/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
-            style="background: white; padding: 30px; border-radius: 15px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; transition: all 0.3s; display: block;"
-            onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
-            onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'"
+            class="category-card"
           >
-            <div style="font-size: 3rem; margin-bottom: 15px;">{category.icon}</div>
-            <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; color: #1a202c;">{category.name}</h3>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="color: #2563eb; font-weight: 600;">{category.count} tools</span>
-              <span style="color: #9ca3af;">→</span>
+            <div class="category-icon">{category.icon}</div>
+            <h3 class="category-name">{category.name}</h3>
+            <div class="category-meta">
+              <span class="category-count">{category.count} tools</span>
+              <span class="category-arrow">→</span>
             </div>
           </a>
         ))}
@@ -133,30 +131,30 @@ const categories = [
     </section>
 
     <!-- Featured Tools -->
-    <section style="margin: 60px 0;">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 15px; color: #1a202c;">Featured Tools</h2>
-        <p style="font-size: 1.2rem; color: #4a5568;">Essential tools recommended by the community</p>
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Featured Tools</h2>
+        <p class="section-subtitle">Essential tools recommended by the community</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;">
+      <div class="tools-grid">
         {featuredTools.map(tool => (
-          <div style="background: white; padding: 30px; border-radius: 15px; border: 2px solid #e2e8f0; transition: all 0.3s;">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
-              <h3 style="font-size: 1.4rem; font-weight: bold; color: #1a202c;">{tool.name}</h3>
-              <span style="background: #f0f9ff; color: #0369a1; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">{tool.pricing}</span>
+          <div class="tool-card">
+            <div class="tool-header">
+              <h3 class="tool-name">{tool.name}</h3>
+              <span class="tool-pricing">{tool.pricing}</span>
             </div>
-            <p style="color: #4a5568; margin-bottom: 15px; line-height: 1.6;">{tool.description}</p>
-            <div style="margin-bottom: 15px;">
-              <span style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">{tool.category}</span>
+            <p class="tool-description">{tool.description}</p>
+            <div class="tool-category">
+              <span class="tool-category-label">{tool.category}</span>
             </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+            <div class="tool-tags">
               {tool.tags.map(tag => (
-                <span style="background: #f3f4f6; color: #374151; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem;">{tag}</span>
+                <span class="tool-tag">{tag}</span>
               ))}
             </div>
-            <a href={tool.website} target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; color: #2563eb; text-decoration: none; font-weight: 600; transition: color 0.3s;">
+            <a href={tool.website} target="_blank" rel="noopener noreferrer" class="tool-link">
               Visit Website
-              <svg style="width: 16px; height: 16px; margin-left: 8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="tool-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
               </svg>
             </a>
@@ -166,12 +164,12 @@ const categories = [
     </section>
 
     <!-- Call to Action -->
-    <section style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 20px; margin: 40px 0;">
-      <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">Share Your Favorite Tools</h2>
-      <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    <section class="cta-section">
+      <h2 class="cta-title">Share Your Favorite Tools</h2>
+      <p class="cta-subtitle">
         Help grow our community by submitting tools you love. Every contribution makes Linux more accessible.
       </p>
-      <a href="/submit" style="display: inline-block; background: #2563eb; color: white; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background-color 0.3s;">
+      <a href="/submit" class="cta-button">
         Submit a Tool
       </a>
     </section>
