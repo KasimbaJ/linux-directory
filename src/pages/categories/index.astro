@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const categories = [
+  { 
+    name: "Operating Systems", 
+    slug: "operating-systems",
+    count: 25, 
+    icon: "🐧",
+    description: "Linux distributions and alternative operating systems"
+  },
+  { 
+    name: "Development Tools", 
+    slug: "development-tools",
+    count: 45, 
+    icon: "⚡",
+    description: "Editors, IDEs, and development utilities"
+  },
+  { 
+    name: "DevOps Tools", 
+    slug: "devops-tools",
+    count: 30, 
+    icon: "🔧",
+    description: "Deployment, monitoring, and infrastructure tools"
+  },
+  { 
+    name: "Security Tools", 
+    slug: "security-tools",
+    count: 20, 
+    icon: "🔒",
+    description: "Cybersecurity and privacy software"
+  },
+  { 
+    name: "Media Tools", 
+    slug: "media-tools",
+    count: 15, 
+    icon: "🎵",
+    description: "Audio, video, and graphics software"
+  },
+  { 
+    name: "Productivity", 
+    slug: "productivity",
+    count: 35, 
+    icon: "📊",
+    description: "Office suites, note-taking, and productivity apps"
+  }
+];
+---
+
+<Layout title="Categories - Linux Directory">
+  <div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">
+          Browse All Categories
+        </h1>
+        <p style="font-size: 1.2rem; color: #4a5568; max-width: 600px; margin: 0 auto;">
+          Explore our curated collection of Linux and open-source tools organized by category
+        </p>
+      </div>
+
+      <!-- Categories Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;">
+        {categories.map(category => (
+          <a 
+            href={`/categories/${category.slug}`}
+            style="background: white; padding: 30px; border-radius: 15px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; transition: all 0.3s; display: block;"
+            onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'"
+          >
+            <div style="font-size: 3rem; margin-bottom: 15px;">{category.icon}</div>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; color: #1a202c;">{category.name}</h3>
+            <p style="color: #4a5568; margin-bottom: 15px; font-size: 1rem;">{category.description}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #2563eb; font-weight: 600;">{category.count} tools</span>
+              <span style="color: #9ca3af; font-size: 1.2rem;">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</Layout>

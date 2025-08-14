@@ -1,0 +1,224 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const categoryName = "Operating Systems";
+const categoryDescription = "Linux distributions and alternative operating systems";
+
+const categoryTools = [
+  {
+    name: "Ubuntu",
+    description: "User-friendly Linux distribution perfect for beginners and professionals. Features long-term support releases and extensive software ecosystem.",
+    website: "https://ubuntu.com",
+    github: "https://github.com/canonical",
+    tags: ["linux", "distribution", "desktop", "beginner-friendly", "lts"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "Fedora",
+    description: "Cutting-edge Linux distribution that showcases the latest in free and open source software, sponsored by Red Hat.",
+    website: "https://fedoraproject.org",
+    github: "https://github.com/fedora-linux",
+    tags: ["linux", "distribution", "cutting-edge", "redhat", "gnome"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "Arch Linux",
+    description: "Lightweight and flexible Linux distribution that tries to Keep It Simple with a rolling release model and powerful package manager.",
+    website: "https://archlinux.org",
+    github: "https://github.com/archlinux",
+    tags: ["linux", "distribution", "rolling-release", "minimal", "advanced"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "Debian",
+    description: "Universal operating system composed entirely of free software, known for its stability and extensive package repositories.",
+    website: "https://debian.org",
+    tags: ["linux", "distribution", "stable", "servers", "universal"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "Pop!_OS",
+    description: "Ubuntu-based Linux distribution designed for STEM and creative professionals, developed by System76 with excellent hardware support.",
+    website: "https://pop.system76.com",
+    github: "https://github.com/pop-os",
+    tags: ["linux", "distribution", "ubuntu-based", "gaming", "creative"],
+    pricing: "free",
+    verified: true
+  }
+];
+
+const featuredTools = [
+  {
+    name: "VS Code",
+    description: "Powerful code editor with excellent Linux support and thousands of extensions.",
+    category: "Development Tools", 
+    website: "https://code.visualstudio.com",
+    tags: ["editor", "development", "microsoft"],
+    pricing: "free"
+  },
+  {
+    name: "Docker",
+    description: "Industry-standard containerization platform for consistent application deployment.",
+    category: "DevOps Tools",
+    website: "https://docker.com",
+    tags: ["containers", "devops", "deployment"],
+    pricing: "freemium"
+  },
+  {
+    name: "GIMP",
+    description: "Professional image editing software, free alternative to Photoshop.",
+    category: "Media Tools", 
+    website: "https://gimp.org",
+    tags: ["graphics", "photo-editing", "design"],
+    pricing: "free"
+  }
+];
+---
+
+<Layout title={`${categoryName} - Linux Directory`}>
+  <div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- Category Header -->
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">
+          🐧 {categoryName}
+        </h1>
+        <p style="font-size: 1.2rem; color: #4a5568; max-width: 600px; margin: 0 auto;">
+          {categoryDescription}
+        </p>
+        <div style="margin-top: 20px;">
+          <span style="background: #dbeafe; color: #1e40af; padding: 8px 16px; border-radius: 20px; font-weight: 600;">
+            {categoryTools.length} tools in this category
+          </span>
+        </div>
+      </div>
+
+      <!-- Category Tools Grid -->
+      <section style="margin-bottom: 80px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px;">
+          {categoryTools.map(tool => (
+            <div style="background: white; border-radius: 15px; border: 2px solid #e2e8f0; padding: 25px; transition: all 0.3s;"
+                 onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
+                 onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
+              <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 15px;">
+                <h3 style="font-size: 1.4rem; font-weight: bold; color: #1a202c; flex: 1;">{tool.name}</h3>
+                {tool.verified && (
+                  <span style="color: #10b981; font-size: 1.2rem;" title="Verified tool">✓</span>
+                )}
+              </div>
+              
+              <p style="color: #4a5568; margin-bottom: 15px; line-height: 1.6;">{tool.description}</p>
+              
+              <div style="display: flex; flex-wrap: gap: 8px; margin-bottom: 20px;">
+                {tool.tags.map(tag => (
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem;">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style={`padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; ${
+                  tool.pricing === 'free' ? 'background: #dcfce7; color: #166534;' : 
+                  tool.pricing === 'freemium' ? 'background: #fef3c7; color: #92400e;' : 
+                  'background: #ede9fe; color: #6b21a8;'
+                }`}>
+                  {tool.pricing}
+                </span>
+                <div style="display: flex; gap: 12px;">
+                  <a 
+                    href={tool.website} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style="color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.9rem;"
+                  >
+                    Website →
+                  </a>
+                  {tool.github && (
+                    <a 
+                      href={tool.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style="color: #6b7280; font-weight: 600; text-decoration: none; font-size: 0.9rem;"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Add Tool CTA -->
+      <section style="background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">Know a Great Linux Distribution?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9;">
+          Help the community discover more amazing Linux distributions and operating systems
+        </p>
+        <a href="/submit" style="background: white; color: #2563eb; padding: 12px 30px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: all 0.3s;"
+           onmouseover="this.style.transform='translateY(-2px)'"
+           onmouseout="this.style.transform='translateY(0)'">
+          Submit a Tool
+        </a>
+      </section>
+
+      <!-- Featured Tools Section -->
+      <section>
+        <div style="text-align: center; margin-bottom: 40px;">
+          <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 15px; color: #1a202c;">Other Featured Tools</h2>
+          <p style="font-size: 1.2rem; color: #4a5568;">Popular tools across all categories</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;">
+          {featuredTools.map(tool => (
+            <div style="background: white; border-radius: 15px; border: 2px solid #e2e8f0; padding: 25px; transition: all 0.3s;"
+                 onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
+                 onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                <h3 style="font-size: 1.4rem; font-weight: bold; color: #1a202c;">{tool.name}</h3>
+                <span style="background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">
+                  {tool.category}
+                </span>
+              </div>
+              
+              <p style="color: #4a5568; margin-bottom: 15px; line-height: 1.5;">{tool.description}</p>
+              
+              <div style="display: flex; flex-wrap: gap: 8px; margin-bottom: 20px;">
+                {tool.tags.map(tag => (
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem;">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style={`padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; ${
+                  tool.pricing === 'free' ? 'background: #dcfce7; color: #166534;' : 
+                  tool.pricing === 'freemium' ? 'background: #fef3c7; color: #92400e;' : 
+                  'background: #ede9fe; color: #6b21a8;'
+                }`}>
+                  {tool.pricing}
+                </span>
+                <a 
+                  href={tool.website} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style="color: #2563eb; font-weight: 600; text-decoration: none;"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>

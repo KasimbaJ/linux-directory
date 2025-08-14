@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const categoryName = "Security Tools";
+const categoryDescription = "Cybersecurity and privacy software for protecting systems and data";
+
+const categoryTools = [
+  {
+    name: "Wireshark",
+    description: "World's foremost network protocol analyzer for troubleshooting, analysis, and security auditing of network communications.",
+    website: "https://wireshark.org",
+    github: "https://github.com/wireshark/wireshark",
+    tags: ["network", "analysis", "security", "protocol", "monitoring"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "Nmap",
+    description: "Network discovery and security auditing tool used to discover hosts and services on a computer network.",
+    website: "https://nmap.org",
+    github: "https://github.com/nmap/nmap",
+    tags: ["network", "scanning", "security", "discovery", "audit"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "OpenVPN",
+    description: "Full-featured SSL VPN solution that accommodates a wide range of configurations and security requirements.",
+    website: "https://openvpn.net",
+    github: "https://github.com/OpenVPN/openvpn",
+    tags: ["vpn", "privacy", "encryption", "networking", "ssl"],
+    pricing: "freemium",
+    verified: true
+  },
+  {
+    name: "ClamAV",
+    description: "Open-source antivirus engine for detecting trojans, viruses, malware and other malicious threats.",
+    website: "https://clamav.net",
+    github: "https://github.com/Cisco-Talos/clamav",
+    tags: ["antivirus", "malware", "security", "scanning", "protection"],
+    pricing: "free",
+    verified: true
+  },
+  {
+    name: "KeePassXC",
+    description: "Cross-platform password manager that provides a secure way to store passwords and other secret information.",
+    website: "https://keepassxc.org",
+    github: "https://github.com/keepassxreboot/keepassxc",
+    tags: ["password", "manager", "encryption", "security", "cross-platform"],
+    pricing: "free",
+    verified: true
+  }
+];
+
+const featuredTools = [
+  {
+    name: "Ubuntu",
+    description: "User-friendly Linux distribution perfect for beginners and professionals.",
+    category: "Operating Systems",
+    website: "https://ubuntu.com",
+    tags: ["linux", "distribution", "desktop"],
+    pricing: "free"
+  },
+  {
+    name: "VS Code",
+    description: "Powerful code editor with excellent Linux support and thousands of extensions.",
+    category: "Development Tools", 
+    website: "https://code.visualstudio.com",
+    tags: ["editor", "development", "microsoft"],
+    pricing: "free"
+  },
+  {
+    name: "Docker",
+    description: "Industry-standard containerization platform for consistent application deployment.",
+    category: "DevOps Tools",
+    website: "https://docker.com",
+    tags: ["containers", "devops", "deployment"],
+    pricing: "freemium"
+  }
+];
+---
+
+<Layout title={`${categoryName} - Linux Directory`}>
+  <div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- Category Header -->
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px; color: #1a202c;">
+          🔒 {categoryName}
+        </h1>
+        <p style="font-size: 1.2rem; color: #4a5568; max-width: 600px; margin: 0 auto;">
+          {categoryDescription}
+        </p>
+        <div style="margin-top: 20px;">
+          <span style="background: #dbeafe; color: #1e40af; padding: 8px 16px; border-radius: 20px; font-weight: 600;">
+            {categoryTools.length} tools in this category
+          </span>
+        </div>
+      </div>
+
+      <!-- Category Tools Grid -->
+      <section style="margin-bottom: 80px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px;">
+          {categoryTools.map(tool => (
+            <div style="background: white; border-radius: 15px; border: 2px solid #e2e8f0; padding: 25px; transition: all 0.3s;"
+                 onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
+                 onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
+              <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 15px;">
+                <h3 style="font-size: 1.4rem; font-weight: bold; color: #1a202c; flex: 1;">{tool.name}</h3>
+                {tool.verified && (
+                  <span style="color: #10b981; font-size: 1.2rem;" title="Verified tool">✓</span>
+                )}
+              </div>
+              
+              <p style="color: #4a5568; margin-bottom: 15px; line-height: 1.6;">{tool.description}</p>
+              
+              <div style="display: flex; flex-wrap: gap: 8px; margin-bottom: 20px;">
+                {tool.tags.map(tag => (
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem;">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style={`padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; ${
+                  tool.pricing === 'free' ? 'background: #dcfce7; color: #166534;' : 
+                  tool.pricing === 'freemium' ? 'background: #fef3c7; color: #92400e;' : 
+                  'background: #ede9fe; color: #6b21a8;'
+                }`}>
+                  {tool.pricing}
+                </span>
+                <div style="display: flex; gap: 12px;">
+                  <a 
+                    href={tool.website} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style="color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.9rem;"
+                  >
+                    Website →
+                  </a>
+                  {tool.github && (
+                    <a 
+                      href={tool.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style="color: #6b7280; font-weight: 600; text-decoration: none; font-size: 0.9rem;"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Add Tool CTA -->
+      <section style="background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">Know a Great Security Tool?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9;">
+          Help the community discover more amazing cybersecurity and privacy tools
+        </p>
+        <a href="/submit" style="background: white; color: #2563eb; padding: 12px 30px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: all 0.3s;"
+           onmouseover="this.style.transform='translateY(-2px)'"
+           onmouseout="this.style.transform='translateY(0)'">
+          Submit a Tool
+        </a>
+      </section>
+
+      <!-- Featured Tools Section -->
+      <section>
+        <div style="text-align: center; margin-bottom: 40px;">
+          <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 15px; color: #1a202c;">Other Featured Tools</h2>
+          <p style="font-size: 1.2rem; color: #4a5568;">Popular tools across all categories</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;">
+          {featuredTools.map(tool => (
+            <div style="background: white; border-radius: 15px; border: 2px solid #e2e8f0; padding: 25px; transition: all 0.3s;"
+                 onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-2px)'"
+                 onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                <h3 style="font-size: 1.4rem; font-weight: bold; color: #1a202c;">{tool.name}</h3>
+                <span style="background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">
+                  {tool.category}
+                </span>
+              </div>
+              
+              <p style="color: #4a5568; margin-bottom: 15px; line-height: 1.5;">{tool.description}</p>
+              
+              <div style="display: flex; flex-wrap: gap: 8px; margin-bottom: 20px;">
+                {tool.tags.map(tag => (
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem;">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style={`padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; ${
+                  tool.pricing === 'free' ? 'background: #dcfce7; color: #166534;' : 
+                  tool.pricing === 'freemium' ? 'background: #fef3c7; color: #92400e;' : 
+                  'background: #ede9fe; color: #6b21a8;'
+                }`}>
+                  {tool.pricing}
+                </span>
+                <a 
+                  href={tool.website} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style="color: #2563eb; font-weight: 600; text-decoration: none;"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
